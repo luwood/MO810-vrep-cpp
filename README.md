@@ -1,4 +1,4 @@
-# C++ V-REP Remote API client
+# MO810-vrep-cpp - C++ V-REP Remote API client
 
 MO810/MC959 - 1s2017 - C++ Example code. 
 
