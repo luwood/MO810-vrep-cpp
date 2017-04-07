@@ -11,7 +11,9 @@ set (VREP_PATH
     $ENV{VREP_PATH}
     CACHE "The VRep build path" STRING)
 
-set (MSOURCES  src/Robot.cpp src/Simulator.cpp 
+file (GLOB MSOURCES "src/*.cpp")
+
+set (VSOURCES  
     ${VREP_PATH}/programming/remoteApi/extApi.c
     ${VREP_PATH}/programming/remoteApi/extApiPlatform.c)
 
@@ -27,7 +29,7 @@ include_directories(${VREP_PATH}/programming/remoteApi/)
 include_directories(${VREP_PATH}/programming/include/)
 link_directories(${VREP_PATH})
 
-add_library (VREPClient SHARED ${MSOURCES})
-add_executable(cli src/Main.cpp ${MSOURCES})
+add_library (VREPClient SHARED ${MSOURCES} ${VSOURCES})
+add_executable(cli src/Main.cpp ${MSOURCES} ${VSOURCES})
 target_link_libraries (cli VREPClient ${EXTRA_LIBRARIES})
 
